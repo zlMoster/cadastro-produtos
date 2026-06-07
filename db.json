@@ -1,0 +1,17 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Mouse Gamer",
+      "price": 120,
+      "category": "Periféricos"
+    },
+    {
+      "id": "2",
+      "name": "Teclado Mecânico",
+      "price": 250,
+      "category": "Periféricos"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
