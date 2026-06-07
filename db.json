@@ -13,5 +13,23 @@
       "category": "Periféricos"
     }
   ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Periféricos"
+    },
+    {
+      "id": "2",
+      "name": "Hardware"
+    },
+    {
+      "id": "3",
+      "name": "Monitores"
+    },
+    {
+      "id": "4",
+      "name": "Acessórios"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

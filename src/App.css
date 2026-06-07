@@ -9,9 +9,9 @@ body,
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -20,6 +20,7 @@ body {
 }
 
 .container {
+  width: 90%;
   max-width: 900px;
   margin: 40px auto;
   background: white;
@@ -29,9 +30,9 @@ body {
 }
 
 h1 {
-  text-align: center;
   color: #1565c0;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 h2 {
@@ -58,18 +59,18 @@ select {
 }
 
 input:focus {
-  outline: none;
   border-color: #1565c0;
+  outline: none;
 }
 
 button {
   background-color: #1565c0;
-  color: white;
   border: none;
-  padding: 12px;
   border-radius: 8px;
-  font-size: 16px;
+  color: white;
   cursor: pointer;
+  font-size: 16px;
+  padding: 12px;
   transition: 0.3s;
 }
 
@@ -81,9 +82,9 @@ button:hover {
   background: white;
   border-left: 5px solid #1565c0;
   border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 15px;
+  padding: 15px;
 }
 
 .product-card h3 {
@@ -92,16 +93,6 @@ button:hover {
 }
 
 .product-card p {
-  margin-bottom: 5px;
   color: #444;
-}
-
-.container {
-  width: 90%;
-  max-width: 900px;
-  margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
 }

@@ -1,40 +1,53 @@
 import { useState, useEffect } from 'react'
 
-
 function ProductForm({ onAdd }) {
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
-  const [category, setCategory] = useState('')  
+  const [category, setCategory] = useState('')
   const [newCategory, setNewCategory] = useState('')
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
-  fetch('http://localhost:3001/categories')
-    .then(response => response.json())
-    .then(data => setCategories(data))
-}, [])
+    fetch('http://localhost:3001/categories')
+      .then((response) => response.json())
+      .then((data) => setCategories(data))
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-const newProduct = {
-  name,
-  price,
-  category: category === 'nova'
-    ? newCategory
-    : category
-}
+    let finalCategory = category
 
-    const response = await fetch(
-      'http://localhost:3001/products',
-      {
+    if (category === 'nova') {
+      const responseCategory = await fetch('http://localhost:3001/categories', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newProduct)
-      }
-    )
+        body: JSON.stringify({
+          name: newCategory,
+        }),
+      })
+
+      const savedCategory = await responseCategory.json()
+
+      setCategories([...categories, savedCategory])
+      finalCategory = newCategory
+    }
+
+    const newProduct = {
+      name,
+      price,
+      category: finalCategory,
+    }
+
+    const response = await fetch('http://localhost:3001/products', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newProduct),
+    })
 
     const data = await response.json()
 
@@ -63,34 +76,29 @@ const newProduct = {
         required
       />
 
-<select
-  value={category}
-  onChange={(e) => setCategory(e.target.value)}
-  required
->
-  <option value="">Selecione uma categoria</option>
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <option value="">Selecione uma categoria</option>
 
-  <option value="Periféricos">Periféricos</option>
-  <option value="Hardware">Hardware</option>
-  <option value="Monitores">Monitores</option>
-  <option value="Acessórios">Acessórios</option>
+        {categories.map((cat) => (
+          <option key={cat.id} value={cat.name}>
+            {cat.name}
+          </option>
+        ))}
 
-  <option value="nova">+ Nova Categoria</option>
-</select>
+        <option value="nova">Nova Categoria</option>
+      </select>
 
-{category === 'nova' && (
-  <input
-    type="text"
-    placeholder="Digite a nova categoria"
-    value={newCategory}
-    onChange={(e) => setNewCategory(e.target.value)}
-    required
-  />
-)}
+      {category === 'nova' && (
+        <input
+          type="text"
+          placeholder="Digite a nova categoria"
+          value={newCategory}
+          onChange={(e) => setNewCategory(e.target.value)}
+          required
+        />
+      )}
 
-      <button type="submit">
-        Cadastrar
-      </button>
+      <button type="submit">Cadastrar</button>
     </form>
   )
 }
