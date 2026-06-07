@@ -11,6 +11,18 @@
       "name": "Teclado Mecânico",
       "price": 250,
       "category": "Periféricos"
+    },
+    {
+      "name": "Monitor 25\" Full HD 1920x1080 320hz",
+      "price": "1500",
+      "category": "Monitores",
+      "id": "O_6RNiV5ExE"
+    },
+    {
+      "name": "Adaptador Bluetooth",
+      "price": "50",
+      "category": "Acessórios",
+      "id": "A14nQbXd_XM"
     }
   ],
   "categories": [
