@@ -2,8 +2,6 @@
 
 Nome da dupla: Gustavo Henrique Nunes de Oliveira / Matheus Alves Costa
 
-Projeto de cadastro de produtos simples usando React e Vite.
-
 ## O que tem no projeto
 
 - Cadastro de produtos com nome, preço e categoria
